@@ -1,1 +1,1 @@
-# react-oassword-manager
+# react-password-manager
