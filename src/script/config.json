@@ -1,0 +1,8 @@
+{
+    "apiKey": "AIzaSyDh-yqPp6H8v6IdpD2eLHOQq87L0DJ49QA",
+    "authDomain": "bankpassword.firebaseapp.com",
+    "databaseURL": "https://bankpassword.firebaseio.com",
+    "projectId": "bankpassword",
+    "storageBucket": "bankpassword.appspot.com",
+    "messagingSenderId": "987515976815"
+}
