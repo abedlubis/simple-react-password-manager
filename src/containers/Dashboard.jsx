@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Layout, Table, Divider, Tag, Button, Row, Input } from 'antd';
+import { Layout, Table, Divider, Button, Row, Input } from 'antd';
 import { bindActionCreators } from 'redux'
 import { connect} from 'react-redux'
 import moment from 'moment'
@@ -12,12 +12,17 @@ import AddPassword from '../components/AddPasswordModal'
 import EditPassword from '../components/EditPasswordModal'
 import {Consumer} from '../ContextProvider'
 
+
 const { Content } = Layout;
 const { Column } = Table;
 const Search = Input.Search;
 
 
 export class Dashboard extends Component {
+
+    state = {
+        passwordType: "password"
+    }
 
     componentDidMount () {
         this.props.listenData()
@@ -34,7 +39,7 @@ export class Dashboard extends Component {
     }
 
     render() {
-        const {passwords, filterPasswords} = this.props
+        const {filterPasswords} = this.props
         const {handleSearch} = this
         return (
             <Consumer>
@@ -52,14 +57,14 @@ export class Dashboard extends Component {
                                 onSearch={handleSearch}
                                 style={{ width: 200, margin: '20px 0px' }}
                             />
-                            { passwords && 
+                            { filterPasswords && 
                                 <Table dataSource={filterPasswords}>
                                     <Column
                                         title="Logo"
                                         dataIndex="image"
                                         key="image"
                                         render={image => (
-                                           <img style={{maxWidth: '50px'}} src={image} />
+                                           <img style={{maxWidth: '50px'}} src={image} alt="image_logo"/>
                                         )}
                                     />
                                     <Column
@@ -76,6 +81,9 @@ export class Dashboard extends Component {
                                         title="Password"
                                         dataIndex="password"
                                         key="password"
+                                        render={password => (
+                                            <Input.Password defaultValue={password} disabled />
+                                        )}
                                     />
                                     <Column
                                         title="Created At"
@@ -89,7 +97,6 @@ export class Dashboard extends Component {
                                         title="Updated At"
                                         dataIndex="updatedAt"
                                         key="updatedAt"
-                                        key="updatedAt"
                                         render={updatedAt => (
                                             moment.unix(updatedAt.seconds || 0).format("MM/DD/YYYY")
                                         )}
@@ -99,10 +106,10 @@ export class Dashboard extends Component {
                                         key="action"
                                         render={key => (
                                             <span>
-                                            <a  onClick={context.toggleEditPasswordModal}>Edit</a>
+                                            <button className="button-edit" onClick={context.toggleEditPasswordModal}>Edit</button>
                                             <EditPassword dataPassword={key}></EditPassword>
                                             <Divider type="vertical" />
-                                            <a onClick={deletePassword(key)}>Delete</a>
+                                            <button className="button-delete" onClick={deletePassword(key)}>Delete</button>
                                             </span>
                                         )}
                                     />

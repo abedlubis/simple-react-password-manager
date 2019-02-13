@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Button, Form, AutoComplete, Input } from 'antd'
+import { Modal, Form, Input } from 'antd'
 import {Consumer} from '../ContextProvider'
 
 import { bindActionCreators } from 'redux'
@@ -75,8 +75,6 @@ export class AddPasswordModal extends Component {
     
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { loading } = this.state
-
         const formItemLayout = {
             labelCol: {
               xs: { span: 24 },

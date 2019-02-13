@@ -5,7 +5,7 @@ require('firebase/firestore')
 
 var config = require('./config.json')
 
-const fbase = firebase.initializeApp(config)
+export const fbase = firebase.initializeApp(config)
 const db = fbase.firestore()
 
 export var fbprovider = new firebase.auth.FacebookAuthProvider();

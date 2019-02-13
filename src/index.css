@@ -8,6 +8,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.button-delete {
+  background: none;
+  border: none; 
+  cursor: pointer;
+}
+.button-edit {
+  background: none;
+  border: none; 
+  cursor: pointer;
+}
+.button-edit:hover {
+  color: rgb(255, 208, 0);
+}
+.button-delete:hover {
+  color: rgb(255, 0, 0);
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

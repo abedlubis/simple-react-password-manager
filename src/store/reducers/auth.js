@@ -1,28 +1,27 @@
 const defaultState = {
-    passwords: [],
-    filterPasswords: [],
+    isLogin: false,
+    showModal: false
 }
 
 export default function(state=defaultState, action) {
     const {type, payload} = action
     switch (type) {
-        case 'ADD_PASSWORD_SUCCESS':
-            return ({
-                ...state
-            })
-        case 'GET_DATA_SUCCESS':
+        case 'HANDLE_LOGIN' :
             return ({
                 ...state,
-                passwords: payload,
-                filterPasswords: payload
+                isLogin: payload
             })
-        case 'SET_NEW_PASSWORDS':
+        case 'HANDLE_CHECK_LOGIN' :
             return ({
                 ...state,
-                filterPasswords: payload
+                isLogin: payload
+            })
+        case 'HANDLE_MODAL' :
+            return ({
+                ...state,
+                showModal: payload
             })
         default:
             return state
     }
-    
 }
